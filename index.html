@@ -38,6 +38,14 @@
 <h1>Datepicker</h1>
 <input type="text" id="dateNasc" placeholder="Aniversário">
 
+
+<h1>Dialog</h1>
+
+<button id="btn">Show Dialog</button>
+<div id="dialog" title="Test Dialog" style="display: none;">
+    <p>This is default Dialog</p>
+</div>
+
 <script>
     $(function(){
         $('#test_acordion').accordion();
@@ -67,6 +75,10 @@
            //$('#dateNasc').datepicker('option','showAnim','slide');
            $('#dateNasc').datepicker('hide');           
         } );
+        
+        $('#btn').click( function(){
+            $('#dialog').dialog();
+        });
         
     });
     
