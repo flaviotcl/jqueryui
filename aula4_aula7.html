@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.theme.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+</head>
+
+<body>
+<div id="test_acordion">
+    <h3>Info 1</h3>
+    <div>
+        <p>
+            Description 1 ....
+        </p>
+    </div>
+    <h3>Info 2</h3>
+    <div>
+        <p>
+            Description 2 ....
+        </p>
+    </div>
+    <h3>Info 2</h3>
+    <div>
+        <p>
+            Description 3 ....
+        </p>
+    </div>
+</div>
+
+<h1>AutoComplete</h1>
+<input type="text" id="autocomplete">
+
+<h1>Datepicker</h1>
+<input type="text" id="dateNasc" placeholder="Aniversário">
+
+
+<h1>Dialog</h1>
+
+<button id="btn">Show Dialog</button>
+<div id="dialog" title="Test Dialog" style="display: none;">
+    <p>This is default Dialog</p>
+</div>
+
+<script>
+    $(function(){
+        $('#test_acordion').accordion();
+        var autocomplete =[
+                'Javascript',
+                'Php',
+                'Java',
+                'C#',
+                'Phyton',
+                'Sql',
+                'Flash',
+                'Git'
+            ];
+        $('#autocomplete').autocomplete({
+            source: autocomplete
+        });
+
+        $('#dateNasc').datepicker();
+       
+        $('#dateNasc').mouseenter( function() {
+           // $('#dateNasc').datepicker('option','showAnim','slide');
+           
+           $('#dateNasc').datepicker('show');
+           
+        } );
+        $('#dateNasc').focusout( function() {
+           //$('#dateNasc').datepicker('option','showAnim','slide');
+           $('#dateNasc').datepicker('hide');           
+        } );
+        
+        $('#btn').click( function(){
+            $('#dialog').dialog();
+        });
+        
+    });
+    
+  
+</script>    
+</body>
+</html>
