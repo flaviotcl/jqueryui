@@ -32,9 +32,25 @@
     </div>
 </div>
 
+<h1>AutoComplete</h1>
+<input type="text" id="autocomplete">
+
 <script>
     $(function(){
         $('#test_acordion').accordion();
+        var autocomplete =[
+                'Javascript',
+                'Php',
+                'Java',
+                'C#',
+                'Phyton',
+                'Sql',
+                'Flash',
+                'Git'
+            ];
+        $('#autocomplete').autocomplete({
+            source: autocomplete
+        });
     });
     
   
