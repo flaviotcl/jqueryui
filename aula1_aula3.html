@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.theme.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+</head>
+<style>
+    #block{
+        height: 150px;
+        width: 100px;
+        border: 2px solid #235ded;
+        background-color: #235ded;
+        color: white;
+        text-align: center;
+    }
+    #droppable{
+        height: 150px;
+        width: 100px;
+        border: 2px solid #eddc94;
+        background-color: #eddc94;
+        color: #12b367;
+        text-align: center;
+    }
+    #container{
+        height: 600px;
+        width: 600px;
+        border: 2px solid #235ded;
+
+    }
+</style>
+<body>
+    
+<!--<p>Date: <input type="text" id="dataNasc"></p> -->
+<div id="container">
+    <div id="block">
+        <p>Dragabble</p>
+        <p>Start: <span id="start"></span></p>
+        <p>Drag: <span id="drag"></span></p>
+        <p>Stop: <span id="stop"></span></p>
+    </div>
+
+    <div id="droppable">
+        <p>Dropabble</p>
+       
+    </div>
+</div>
+
+
+<script>
+
+    $(function(){
+        var start = 0;
+        var drag = 0;
+        var stop = 0;
+       // $('#dataNasc').datepicker();
+       $('#block').draggable({
+           containment: "#container",
+           start: function(){
+                $('#start').html(start++);
+           },
+           drag: function(){
+                $('#drag').html(drag++);
+           },
+           stop: function(){
+                $('#stop').html(stop++);
+           }
+       });
+
+       $('#droppable').droppable({
+           accept : "#block",
+           hoverClass: function(){
+                    $(this).css("background-color", "#EDB059");
+           },
+           activeClass: function(){
+                    $(this).css("background-color", "blue");
+           },
+           drop : function(event, ui){
+                    /**
+                     *  Comando abaixo acessa as propriedades do elemento
+                     *  q/ foi dropado no Droppable.
+                     * 
+                     *  console.log(ui.draggable[0].className); 
+                     *
+                     */
+                    $(this).css("background-color", "#ED7C12");
+                    $(this).html("OK");
+            }              
+       });
+    });
+
+</script>    
+</body>
+</html>
