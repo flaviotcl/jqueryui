@@ -35,6 +35,9 @@
 <h1>AutoComplete</h1>
 <input type="text" id="autocomplete">
 
+<h1>Datepicker</h1>
+<input type="text" id="dateNasc" placeholder="Aniversário">
+
 <script>
     $(function(){
         $('#test_acordion').accordion();
@@ -51,6 +54,20 @@
         $('#autocomplete').autocomplete({
             source: autocomplete
         });
+
+        $('#dateNasc').datepicker();
+       
+        $('#dateNasc').mouseenter( function() {
+           // $('#dateNasc').datepicker('option','showAnim','slide');
+           
+           $('#dateNasc').datepicker('show');
+           
+        } );
+        $('#dateNasc').focusout( function() {
+           //$('#dateNasc').datepicker('option','showAnim','slide');
+           $('#dateNasc').datepicker('hide');           
+        } );
+        
     });
     
   
