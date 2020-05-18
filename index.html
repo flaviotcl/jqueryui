@@ -9,19 +9,54 @@
     <script src="js/jquery.js"></script>
     <script src="js/jquery-ui.js"></script>
 </head>
+<style>
+    #block{
+        height: 150px;
+        width: 100px;
+        border: 2px solid #235ded;
+        background-color: #235ded;
+        color: white;
+        text-align: center;
+    }
+    #container{
+        height: 600px;
+        width: 600px;
+        border: 2px solid #235ded;
+
+    }
+</style>
 <body>
     
-<p>Date: <input type="text" id="dataNasc"></p>
-
-
+<!--<p>Date: <input type="text" id="dataNasc"></p> -->
+<div id="container">
+    <div id="block">
+        <p>Dragabble</p>
+        <p>Start: <span id="start"></span></p>
+        <p>Drag: <span id="drag"></span></p>
+        <p>Stop: <span id="stop"></span></p>
+    </div>
+</div>
 
 <script>
 
     $(function(){
-
-        $('#dataNasc').datepicker();
-
-    })
+        var start = 0;
+        var drag = 0;
+        var stop = 0;
+       // $('#dataNasc').datepicker();
+       $('#block').draggable({
+           containment: "#container",
+           start: function(){
+                $('#start').html(start++);
+           },
+           drag: function(){
+                $('#drag').html(drag++);
+           },
+           stop: function(){
+                $('#stop').html(stop++);
+           }
+       });
+    });
 
 </script>    
 </body>
