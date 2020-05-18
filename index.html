@@ -18,6 +18,14 @@
         color: white;
         text-align: center;
     }
+    #droppable{
+        height: 150px;
+        width: 100px;
+        border: 2px solid #eddc94;
+        background-color: #eddc94;
+        color: #12b367;
+        text-align: center;
+    }
     #container{
         height: 600px;
         width: 600px;
@@ -35,7 +43,13 @@
         <p>Drag: <span id="drag"></span></p>
         <p>Stop: <span id="stop"></span></p>
     </div>
+
+    <div id="droppable">
+        <p>Dropabble</p>
+       
+    </div>
 </div>
+
 
 <script>
 
@@ -55,6 +69,20 @@
            stop: function(){
                 $('#stop').html(stop++);
            }
+       });
+
+       $('#droppable').droppable({
+           accept : "#block",
+           hoverClass: function(){
+                    $(this).css("background-color", "#EDB059");
+           },
+           activeClass: function(){
+                    $(this).css("background-color", "blue");
+           },
+           drop : function(){
+                    $(this).css("background-color", "#ED7C12");
+                    $(this).html("OK");
+            }              
        });
     });
 
