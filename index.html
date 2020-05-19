@@ -9,45 +9,29 @@
     <script src="js/jquery.js"></script>
     <script src="js/jquery-ui.js"></script>
 </head>
-<style>
-    .ui-progressbar {
-        position: relative;
-    }
-    .progress-label {
-        position: absolute;
-        left: 50%;
-        top: 4px;
-        font-weight: bold;
-        text-shadow: 1px 1px 0 #fff;
-    }
-</style>
+
 <body>
-    <h1>Progressbar</h1>
-    <div id="progressbar"><div class="progress-label">Loading...</div></div>
+   <div id="tabs">
+       <ul>
+           <li><a href="#tabs-1">Tab1</a></li>
+           <li><a href="#tabs-2">Tab2</a></li>
+           <li><a href="#tabs-3">Tab3</a></li>
+       </ul>
+  
+       <div id="tabs-1"><p>Text Tab 1</p></div>
+       <div id="tabs-2"><p>Text Tab 2</p></div>
+       <div id="tabs-3"><p>Text Tab 3</p></div>
+    </div>
 <script>
-$(function(){
-        $('#progressbar').progressbar({
-            value:false,
-            change: function(){
-                $('.progress-label').text($('#progressbar').progressbar('value') + "%");
-            },
-            complete:function(){
-                $('.progress-label').text("Complete!");
-            }
-        });
-
-        function progress(){
-            var val = $('#progressbar').progressbar("value") || 0;
-            $('#progressbar').progressbar("value",val + 2);
-
-            if(val < 99){
-                setTimeout( progress,80);
-            }
+$( function(){
+    var tabs  = $('#tabs').tabs();
+    tabs.find(".ui-tabs-nav").sortable({
+        axis: "x",
+        stop: function(){
+            tabs.tabs("refresh");
         }
-
-        setTimeout(progress, 2000);
-
     });
+});
 
 
 
